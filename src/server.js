@@ -11,7 +11,13 @@ connectDB()
 
 const app = express()
 
+// body parsing middlewares
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
+// API routes
+app.use('/movies', movieRoutes)
+app.use('/auth', authRoutes)
 
 const PORT = 5001
 const server = app.listen(PORT, () => {
